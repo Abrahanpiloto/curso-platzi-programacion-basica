@@ -5,57 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Piedra Papel Tijera</title>
     <script>
-        //1 es piedra, 2 es papel, 3 es tijera.
-        //para que la pc elija de manera aleatoria pero con una funcion:
+
+        // 1 es piedra 🪨
+        // 2 es papel 🧻
+        // 3 es tijera ✂️
+
+     
+
+        //Funcion para que la PC elija de manera aleatoria:
         const aleatorio =(min, max) => {
            return Math.floor(Math.random() * 3) + 1; 
-        } 
+        };
 
+         //Opciones del JUGADOR y de la PC:
         function eleccion(jugada) {
-            
-        }
+            let resultado = "";
+            if(jugada == 1) {
+                resultado = "Piedra 🪨";
+            } else if (jugada == 2) {
+                resultado = "Papel 🧻"
+            } else if (jugada == 3) {
+                resultado = "Tijera ✂️";
+            } else {
+                resultado ="Mala Elección";
+            }
+            return resultado;
+        };
+      
+        // Variables:
         let jugador = 0;
-        let pc = aleatorio(1,3)
+        let pc = 0;
+        let triunfos = 0;
+        let perdidas = 0;
+       
+        // Ciclo:
+        while(triunfos < 3 && perdidas < 3) {
+            pc = aleatorio(1,3);
 
-        //para que pc elija de manera aleatoria:
-        //let pc = Math.floor(Math.random() * 3) + 1;
-        jugador = prompt("Elige: 1 🪨, 2 para 🧻, 3 para ✂️");
-        //alert("elegiste " + jugador)
-        //opciones del JUGADOR:
-        if(jugador == 1) {
-            alert("elegiste 🪨")
-        } else if (jugador == 2) {
-            alert("elegiste 🧻")
-        } else if (jugador == 3) {
-            alert("Elegiste ✂️")
-        } else {
-            alert("Perdiste")
-        }
-        //Opciones del PC:
-        if(pc == 1) {
-            alert("PC elige 🪨")
-        } else if (pc == 2) {
-            alert("PC elige 🧻")
-        } else if (pc == 3) {
-            alert("PC elige ✂️")
-        } 
-
-        //COMBATE
-        if(jugador == pc) {
-            alert("EMPATE!!!")
-        } else if (jugador ==1 && pc == 3) {
-            alert("GANASTE!!! 🏆");
-        } else if (jugador == 2 && pc == 1) {
-            alert("GANASTE!!! 🏆");
-        } else if (jugador == 3 && pc === 2) {
-            alert("GANASTE!!! 🏆");
-        } else {
-            alert("PERDISTE 👎")
-        }
-
+            jugador = prompt("Elige: 1 🪨, 2 para 🧻, 3 para ✂️");
+            alert("Tu Elegiste: " + eleccion(jugador));33
+            alert("PC elige: " + eleccion(pc));
+        
+            //COMBATE
+            if(jugador == pc) {
+                alert("EMPATE!!!");
+            } else if (jugador ==1 && pc == 3) {
+                alert("GANASTE!!! 🏆");
+                triunfos = triunfos + 1;
+               3
+            } else if (jugador == 2 && pc == 1) {
+                alert("GANASTE!!! 🏆");
+                triunfos = triunfos + 1;
+                
+            } else if (jugador == 3 && pc === 2) {
+                alert("GANASTE!!! 🏆");
+                triunfos = triunfos + 1;
+                
+            } else {
+                alert("PERDISTE 👎");
+                perdidas = perdidas + 1;
+            };
+        };
+        
+       console.log(triunfos)
+        
     </script>
 </head>
 <body>
     <h1>Piedra Papel o Tijera</h1>
+    <h2 id="triunfosYo">Triunfos: 0</h2>
 </body>
 </html>
